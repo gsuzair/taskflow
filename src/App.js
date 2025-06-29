@@ -1,7 +1,8 @@
 import './App.css';
+import TaskList from './components/TaskList';
 
 function App() {
-  return <div>Hello TaskFlow</div>;
+  return <TaskList />;
 }
 
 export default App;
