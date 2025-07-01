@@ -1,14 +1,14 @@
 import TaskItem from "./TaskItem";
 
-function TaskList() {
-    let staticList = ['Item1', 'Item2', 'Item3'];
-    return (
-        <ul>
-        {staticList.map((s, index) => (
-            <TaskItem key={index} title={s} />
-        ))}
-        </ul>
-    );
+function TaskList(props) {
+  return (
+    <ul>
+      {props.tasks.map(task => (
+        <li key={task.id}>{task.title}</li>
+      ))}
+    </ul>
+  );
 }
+
 
 export default TaskList;
