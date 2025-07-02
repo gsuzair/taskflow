@@ -1,7 +1,8 @@
-function TaskItem(props) {
-    return (
+function TaskItem({ task, onDelete }) {
+  return (
     <li>
-      {props.title} {props.done && "✅"}
+      {task.title}
+      <button onClick={() => onDelete(task.id)}>❌</button>
     </li>
   );
 }

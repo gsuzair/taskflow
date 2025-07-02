@@ -5,24 +5,29 @@ import './App.css';
 function App() {
   const [inputData, setInputData] = useState("");
   const [tasks, setTasks] = useState([]);
+  let taskId = Date.now()
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputData.trim() === "") return;
 
     const newTask = {
-      id: Date.now(),
+      id: taskId,
       title: inputData,
-      done: false
+      done: false,
     };
 
     setTasks([...tasks, newTask]);
     setInputData("");
   };
 
+  const onDelete = (id) => {
+    setTasks(tasks.filter(task => task.id !== id));
+  };
+
   return (
     <div>
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} onDelete={onDelete} />
       <form onSubmit={handleSubmit}>
         <label>Enter your item:
           <input 
