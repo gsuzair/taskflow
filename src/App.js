@@ -25,9 +25,16 @@ function App() {
     setTasks(tasks.filter(task => task.id !== id));
   };
 
+  const onStatusChange = (id) => {
+    const updatedTasks = tasks.map(task =>
+      task.id === id ? { ...task, done: !task.done } : task
+    );
+    setTasks(updatedTasks);
+  };
+
   return (
     <div>
-      <TaskList tasks={tasks} onDelete={onDelete} />
+      <TaskList tasks={tasks} onDelete={onDelete} onStatusChange={onStatusChange} />
       <form onSubmit={handleSubmit}>
         <label>Enter your item:
           <input 
