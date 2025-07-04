@@ -9,8 +9,10 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (inputData.trim() === "") return;
-
+    if (inputData.trim() === "") return alert("Task can not be empty");
+    if (tasks.some(task => task.title === inputData)) {
+      return alert("Duplicate task");
+    }
     const newTask = {
       id: taskId,
       title: inputData,
