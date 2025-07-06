@@ -22,7 +22,7 @@ function App() {
     if (tasks.some(task => task.title === inputData)) {
       setShowDuplicateError(true);
       return;
-    }else {
+    } else {
       setShowDuplicateError(false);
     }
     const newTask = {
