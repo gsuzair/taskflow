@@ -1,13 +1,15 @@
 function TaskItem({ task, onDelete, onStatusChange }) {
   return (
-    <li>
-      <span style={{ textDecoration: task.done ? "line-through" : "none" }}>
+    <li className={task.done ? "task done" : "task"}>
+      <span>
         {task.title}
       </span>
-      <button onClick={() => onStatusChange(task.id)}>
+      <button className="done-toggle" onClick={() => onStatusChange(task.id)}>
         {task.done ? "✅" : "⬜"}
       </button>
-      <button onClick={() => onDelete(task.id)}>❌</button>
+      <button className="delete" onClick={() => onDelete(task.id)}>
+        ❌
+      </button>
     </li>
   );
 }

@@ -63,15 +63,16 @@ function App() {
     <div>
       <TaskList tasks={tasks} onDelete={onDelete} onStatusChange={onStatusChange} />
       <form onSubmit={handleSubmit}>
-        <label>Enter your item:
+        <label>
+          Enter your item:
           <input 
             type="text"
             value={inputData}
             onChange={(e) => setInputData(e.target.value)} 
           />
-          {showEmptyError && <p className="error-empty">Task cannot be empty</p>}
-          {showDuplicateError && <p className="error-exists">Task already exists</p>}
         </label>
+        {showEmptyError && <p className="error-empty">Task cannot be empty</p>}
+        {showDuplicateError && <p className="error-exists">Task already exists</p>}
         <button type="submit">Submit</button>
       </form>
     </div>
