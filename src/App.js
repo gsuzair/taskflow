@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import TaskList from './components/TaskList';
 import './App.css';
 
@@ -7,6 +7,18 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [showEmptyError, setShowEmptyError] = useState(false);
   const [showDuplicateError, setShowDuplicateError] = useState(false);
+
+  useEffect(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks));
+    }
+  }, []);
+
+   useEffect(() => {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }, [tasks]);
+    
 
   let taskId = Date.now()
 
@@ -32,6 +44,7 @@ function App() {
     };
 
     setTasks([...tasks, newTask]);
+
     setInputData("");
   };
 
